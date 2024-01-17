@@ -1,25 +1,57 @@
+using FluentValidation;
+using System.Reflection;
+using Snap.Financials.Infrastructure;
+using Snap.Financials.Endpoints;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+#region Swagger
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#endregion
+
+#region Infrastructure
+
+builder.Services.AddDatabaseInfrastructure(builder.Configuration);
+
+#endregion
+
+#region Validation
+
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+#endregion
+
+#region Endpoints
+
+builder.Services.AddEndpoints();
+
+#endregion
+
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+#region Swagger 
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+#endregion
+
+#region Pipeline
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
-app.MapControllers();
+#endregion 
+
+#region Endpoints
+
+app.RegisterRoutes();
+
+#endregion
+
 
 app.Run();

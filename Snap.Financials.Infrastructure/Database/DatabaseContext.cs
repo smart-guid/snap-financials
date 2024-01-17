@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Snap.Financials.Infrastructure.Database.Models;
+using System.Reflection;
 
 namespace Snap.Financials.Infrastructure.Database;
 
@@ -16,8 +17,6 @@ public class DatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<CompanyInfo>().ToTable("tblCompany");
-        modelBuilder.Entity<Customer>().ToTable("tblCustomer");
-        modelBuilder.Entity<Invoice>().ToTable("tblInvoice");
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

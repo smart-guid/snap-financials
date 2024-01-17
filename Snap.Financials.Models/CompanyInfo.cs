@@ -1,6 +1,6 @@
 ﻿namespace Snap.Financials.Models;
 
-public class BusinessModel
+public class CompanyInfoModel
 {
     public Guid Id { get; set; }
 

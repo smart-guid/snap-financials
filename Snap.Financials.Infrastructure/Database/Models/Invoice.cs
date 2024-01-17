@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Snap.Financials.Infrastructure.Database.Models;
 
 public class Invoice : Entity
 {
+    [InverseProperty("Lines")]
+    public ICollection<InvoiceLine> Lines { get; set; } = default!;
 }

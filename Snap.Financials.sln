@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snap.Financials.Models", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snap.Financials.Infrastructure", "Snap.Financials.Infrastructure\Snap.Financials.Infrastructure.csproj", "{A4AF5A8F-DAC3-4B3F-9F45-7F9C8D781863}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snap.Financials.Repositories", "Snap.Financials.Repositories\Snap.Financials.Repositories.csproj", "{D0FB0263-5C00-4D5B-82F9-5D5EE00655AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snap.Financials.Endpoints", "Snap.Financials.Endpoints\Snap.Financials.Endpoints.csproj", "{3F55470C-91BF-4A32-B69B-595AF6F75C07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{A4AF5A8F-DAC3-4B3F-9F45-7F9C8D781863}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4AF5A8F-DAC3-4B3F-9F45-7F9C8D781863}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4AF5A8F-DAC3-4B3F-9F45-7F9C8D781863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0FB0263-5C00-4D5B-82F9-5D5EE00655AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0FB0263-5C00-4D5B-82F9-5D5EE00655AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0FB0263-5C00-4D5B-82F9-5D5EE00655AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0FB0263-5C00-4D5B-82F9-5D5EE00655AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F55470C-91BF-4A32-B69B-595AF6F75C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F55470C-91BF-4A32-B69B-595AF6F75C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F55470C-91BF-4A32-B69B-595AF6F75C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F55470C-91BF-4A32-B69B-595AF6F75C07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
