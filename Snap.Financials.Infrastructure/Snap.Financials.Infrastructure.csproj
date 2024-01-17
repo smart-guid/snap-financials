@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Snap.Financials.Repositories\Snap.Financials.Repositories.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(AssemblyName).Integration.Tests" />
+  </ItemGroup>
+
 </Project>
