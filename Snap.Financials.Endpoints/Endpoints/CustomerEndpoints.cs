@@ -23,7 +23,7 @@ public class CustomerEndpoints : IEndpoint
     public void MapEndpoints(WebApplication app)
     {
         var group = app.MapGroup("/api/customers")
-          .WithTags("customers")
+          .WithTags("Customers")
           .WithOpenApi();
 
         group.MapGet("/", GetCustomersAsync)

@@ -11,7 +11,13 @@ internal class CompanyInfoConfiguration : EntityConfiguration<CompanyInfo>
         base.Configure(builder);
         
         builder.ToTable("tblCompany");
-        builder.Property(m => m.Name).IsRequired();
-        builder.Property(m => m.Email).IsRequired();
+        builder.Property(m => m.Name).HasMaxLength(200).IsRequired();
+        builder.Property(m => m.Email).HasMaxLength(50).IsRequired();
+        builder.Property(m => m.PhoneNumber).HasMaxLength(15).IsRequired();
+        builder.Property(m => m.Address).HasMaxLength(100).IsRequired();
+        builder.Property(m => m.City).HasMaxLength(50).IsRequired();
+        builder.Property(m => m.Province).HasMaxLength(20).IsRequired();
+        builder.Property(m => m.Country).HasMaxLength(50).IsRequired();
+        builder.Property(m => m.LogoUrl).HasMaxLength(200).IsRequired();
     }
 }

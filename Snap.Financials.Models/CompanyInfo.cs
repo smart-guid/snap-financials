@@ -19,5 +19,7 @@ public class CompanyInfoModel
     public string Country { get; set; } = default!;
 
     public string LogoUrl { get; set; } = default!;
+
+    //public string TaxNumber { get; set; } = default!;
 }
 

@@ -15,4 +15,8 @@ public class Customer : Entity
     public string Province { get; set; } = default!;
 
     public string Country { get; set; } = default!;
+
+
+  
+    public ICollection<Invoice> Invoices { get; set; } = default!;
 }

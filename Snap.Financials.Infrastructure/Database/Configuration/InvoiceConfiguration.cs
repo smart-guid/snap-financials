@@ -10,13 +10,18 @@ internal class InvoiceConfiguration : EntityConfiguration<Invoice>
     {
         base.Configure(builder);
 
-
         builder.ToTable("tblInvoice");
 
-        builder.HasMany(f => f.Lines).WithOne(o => o.Invoice).HasForeignKey(k => k.InvoiceId);
-
-        //builder.Property(m => m.Name).IsRequired();
-        //builder.Property(m => m.Email).IsRequired();
+        builder.HasOne(i => i.Customer)       
+               .WithMany(m => m.Invoices)     
+               .HasForeignKey(f => f.CustomerId); 
+       
+        builder.Property(m => m.InvoiceNumber).HasMaxLength(10).IsRequired();
+        builder.Property(m => m.InvoiceDate).IsRequired();
+        builder.Property(m => m.DueDate).IsRequired();
+        builder.Property(m => m.PaymentTerms).HasMaxLength(20).IsRequired();
+        builder.Property(m => m.PaymentInstructions).HasMaxLength(200);
+        builder.Property(m => m.CustomerId).IsRequired();
     }
 }
 
