@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 
 namespace Snap.Financials.Endpoints.Validators;
 
-
 public class ValidationFilter<T>(IValidator<T> validator) : IEndpointFilter
 {
     public async ValueTask<object> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)

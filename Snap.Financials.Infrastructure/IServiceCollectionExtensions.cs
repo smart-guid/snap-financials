@@ -16,18 +16,18 @@ public static class IServiceCollectionExtensions
         services.AddDbContext<DatabaseContext>(options =>
           options.UseSqlite(configuration.GetConnectionString("Database")));
 
-        services.AddSingleton<SqlRepository>();
+        services.AddScoped<SqlRepository>();
 
-        services.AddSingleton<ICustomerRepository>(s => s.GetRequiredService<SqlRepository>());
-        services.AddSingleton<ICompanyInfoRepository>(s => s.GetRequiredService<SqlRepository>());
-        services.AddSingleton<IInvoiceRepository>(s => s.GetRequiredService<SqlRepository>());
+        services.AddScoped<ICustomerRepository>(s => s.GetRequiredService<SqlRepository>())
+                .AddScoped<ICompanyInfoRepository>(s => s.GetRequiredService<SqlRepository>())
+                .AddScoped<IInvoiceRepository>(s => s.GetRequiredService<SqlRepository>());
 
         return services;
     }
 
     public static IServiceCollection AddUserInfrastructure(this IServiceCollection services)
     {
-        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddSingleton<IUserRepository, UserRepository>();
 
         return services;
     }

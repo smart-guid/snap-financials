@@ -1,20 +1,16 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Snap.Financials.Endpoints.Endpoints;
+using Snap.Financials.Endpoints.Endpoints.Contracts;
 
 namespace Snap.Financials.Endpoints;
 
 public static class WebApplicationExtensions
 {
-    public static WebApplication RegisterRoutes(this WebApplication app)
+    public static WebApplication RegisterEndpoints(this WebApplication app)
     {
-        var endpoints = app.Services.GetServices<IEndpoint>();
-
-        foreach (var endpoint in endpoints)
-        {
-            endpoint.MapEndpoints(app);
-        }
-
+        using var scope = app.Services.CreateScope();
+        var factory = scope.ServiceProvider.GetRequiredService<IEndpointFactory>();
+        factory.CreateEndpoints(app);
         return app;
     }
 }

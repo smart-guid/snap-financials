@@ -2,6 +2,7 @@ using FluentValidation;
 using System.Reflection;
 using Snap.Financials.Infrastructure;
 using Snap.Financials.Endpoints;
+using Snap.Financials.Endpoints.Endpoints.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 #region Infrastructure
 
+builder.Services.AddUserInfrastructure();
 builder.Services.AddDatabaseInfrastructure(builder.Configuration);
 
 #endregion
@@ -30,7 +32,6 @@ builder.Services.AddEndpoints();
 
 #endregion
 
-
 var app = builder.Build();
 
 #region Swagger 
@@ -43,13 +44,12 @@ app.UseSwaggerUI();
 #region Pipeline
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
 
-#endregion 
+#endregion
 
 #region Endpoints
 
-app.RegisterRoutes();
+app.RegisterEndpoints();
 
 #endregion
 

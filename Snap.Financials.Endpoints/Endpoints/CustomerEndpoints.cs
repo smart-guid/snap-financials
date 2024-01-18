@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Snap.Financials.Endpoints.Endpoints.Contracts;
 using Snap.Financials.Endpoints.Validators;
 using Snap.Financials.Models;
 using Snap.Financials.Repositories;
