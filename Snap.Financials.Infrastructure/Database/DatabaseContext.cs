@@ -14,6 +14,7 @@ public class DatabaseContext : DbContext
     public DbSet<CompanyInfo> CompanyInfo { get; set; }
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Invoice> Invoices { get; set; }
+    public DbSet<InvoiceLine> InvoiceLines { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

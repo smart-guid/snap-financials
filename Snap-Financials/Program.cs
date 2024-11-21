@@ -1,8 +1,7 @@
 using FluentValidation;
-using System.Reflection;
-using Snap.Financials.Infrastructure;
 using Snap.Financials.Endpoints;
-using Snap.Financials.Endpoints.Endpoints.Contracts;
+using Snap.Financials.Infrastructure;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,12 +16,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddUserInfrastructure();
 builder.Services.AddDatabaseInfrastructure(builder.Configuration);
-
-#endregion
-
-#region Validation
-
-builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 #endregion
 

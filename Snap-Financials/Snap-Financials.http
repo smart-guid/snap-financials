@@ -1,6 +1,0 @@
-@Snap_Financials_HostAddress = http://localhost:5111
-
-GET {{Snap_Financials_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

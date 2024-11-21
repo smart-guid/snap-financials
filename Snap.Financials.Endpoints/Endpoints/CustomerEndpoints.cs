@@ -37,13 +37,13 @@ public class CustomerEndpoints : IEndpoint
             .ProducesProblem(StatusCodes.Status500InternalServerError)
             .ProducesValidationProblem();
 
-        group.MapPost("/", CreateCustomer)
+        group.MapPost("/", CreateCustomerAsync)
             .AddEndpointFilter<ValidationFilter<CustomerModel>>()
             .Produces<CustomerModel>()
             .ProducesProblem(StatusCodes.Status500InternalServerError)
             .ProducesValidationProblem();
 
-        group.MapPut("/", UpdateCustomer)
+        group.MapPut("/", UpdateCustomerAsync)
             .AddEndpointFilter<ValidationFilter<Guid>>()
             .AddEndpointFilter<ValidationFilter<CustomerModel>>()
             .Produces(StatusCodes.Status204NoContent)
@@ -57,6 +57,8 @@ public class CustomerEndpoints : IEndpoint
     {
         try
         {
+            _logger.LogInformation("GetCustomersAsync");
+
             return Results.Ok(await _repository.GetCustomersAsync(cancellationToken));
         }
         catch (Exception ex)
@@ -70,6 +72,9 @@ public class CustomerEndpoints : IEndpoint
     {
         try
         {
+
+            _logger.LogInformation("GetCustomerByIdAsync id={id}", id);
+
             var customer = await _repository.GetCustomerByIdAsync(id, cancellationToken);
             if (customer == null)
             {
@@ -84,10 +89,12 @@ public class CustomerEndpoints : IEndpoint
         }
     }
 
-    public async Task<IResult> CreateCustomer([FromBody] CustomerModel model, CancellationToken cancellationToken)
+    public async Task<IResult> CreateCustomerAsync([FromBody] CustomerModel model, CancellationToken cancellationToken)
     {
         try
         {
+            _logger.LogInformation("CreateCustomerAsync");
+
             return Results.Ok(await _repository.CreateCustomerAsync(model, cancellationToken));
         }
         catch (Exception ex)
@@ -97,10 +104,12 @@ public class CustomerEndpoints : IEndpoint
         }
     }
 
-    public async Task<IResult> UpdateCustomer([FromBody] CustomerModel model, CancellationToken cancellationToken)
+    public async Task<IResult> UpdateCustomerAsync([FromBody] CustomerModel model, CancellationToken cancellationToken)
     {
         try
         {
+            _logger.LogInformation("UpdateCustomerAsync");
+
             await _repository.UpdateCustomerAsync(model, cancellationToken);
 
             return Results.NoContent();
@@ -111,6 +120,4 @@ public class CustomerEndpoints : IEndpoint
             return Results.Problem(ex.StackTrace, ex.Message, StatusCodes.Status500InternalServerError);
         }
     }
-
 }
-

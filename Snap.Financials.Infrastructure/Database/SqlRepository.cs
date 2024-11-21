@@ -168,8 +168,8 @@ public class SqlRepository : ICompanyInfoRepository, ICustomerRepository, IInvoi
 
         if (entity != null)
         {
-           //ToDo: add fields
-           entity.DateModified = DateTime.UtcNow;
+            //ToDo: add fields
+            entity.DateModified = DateTime.UtcNow;
 
             _database.Update(entity);
             await _database.SaveChangesAsync(cancellationToken);
@@ -191,6 +191,27 @@ public class SqlRepository : ICompanyInfoRepository, ICustomerRepository, IInvoi
 
         return _mapper.Map<IList<InvoiceModel>>(result);
     }
+
+    #endregion
+
+    #region Invoice Lines
+
+
+    public async Task CreateInvoiceLineAsync(Guid invoiceId, InvoiceLineModel model, CancellationToken cancellationToken)
+    {
+
+        var entity = _mapper.Map<InvoiceLine>(model);
+        entity.UserId = _userRepository.GetCurrentUserId();
+        entity.DateCreated = DateTime.UtcNow;
+        entity.DateModified = DateTime.UtcNow;
+        entity.Id = Guid.NewGuid();
+        entity.InvoiceId = invoiceId;
+
+        _database.InvoiceLines.Add(entity);
+
+        await _database.SaveChangesAsync(cancellationToken);       
+    }
+
 
     #endregion
 }

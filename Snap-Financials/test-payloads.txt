@@ -1,0 +1,10 @@
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "name": "OGGN Inc",
+  "email": "harpreet@oggninc.com",
+  "phoneNumber": "613-252-9504",
+  "address": "150 Elgin Street, 10th Floor",
+  "city": "Ottawa",
+  "province": "ON",
+  "country": "CA"
+}
